@@ -3,33 +3,33 @@ import { useState } from "react";
 /* ─── Data ──────────────────────────────────────────────────────────────── */
 
 const ENGINES = [
-  { id: "buy",   name: "Buy Engine",  desc: "Top of funnel and conversion" },
-  { id: "sell",  name: "Sell Engine", desc: "Customer acquisition" },
-  { id: "rosso", name: "Rosso",       desc: "tem's proprietary pricing algorithm" },
+  { id: "buy",   emoji: "🎣", name: "Buy Engine",  desc: "Top of funnel and conversion" },
+  { id: "sell",  emoji: "🤝", name: "Sell Engine", desc: "Customer acquisition" },
+  { id: "rosso", emoji: "🌹", name: "Rosso",       desc: "tem's proprietary pricing algorithm" },
 ];
 
 const SERVICES = [
-  { id: "growth",         name: "Growth Marketing",       desc: "Driving awareness and demand generation" },
-  { id: "creative",       name: "Creative Design",        desc: "Visual design and creative production" },
-  { id: "brand",          name: "Brand & Credibility",    desc: "Brand strategy, content and market presence" },
-  { id: "talent",         name: "Talent",                 desc: "Attracting and hiring the best people" },
-  { id: "performance",    name: "Performance",            desc: "People ops and performance management" },
-  { id: "agents",         name: "Agents",                 desc: "AI agents and automation across the business" },
-  { id: "designplatform", name: "Design Platform",        desc: "Design systems and product experience" },
-  { id: "platform",       name: "Platform",               desc: "Core product and technology platform" },
-  { id: "dms",            name: "DMS",                    desc: "Data management service" },
-  { id: "finance",        name: "Financial Performance",  desc: "FP&A, financial controls, risk management" },
-  { id: "legal",          name: "Legal & Regs",           desc: "Legal, compliance and regulatory affairs" },
-  { id: "billing",        name: "Billing & Payments",     desc: "Billing processes and generator payouts" },
-  { id: "market",         name: "Market Integration",     desc: "Data ingestion and market connectivity" },
+  { id: "growth",         emoji: "📈", name: "Growth Marketing",       desc: "Driving awareness and demand generation" },
+  { id: "creative",       emoji: "🎨", name: "Creative Design",        desc: "Visual design and creative production" },
+  { id: "brand",          emoji: "📣", name: "Brand & Credibility",    desc: "Brand strategy, content and market presence" },
+  { id: "talent",         emoji: "🧲", name: "Talent",                 desc: "Attracting and hiring the best people" },
+  { id: "performance",    emoji: "🧑‍💼", name: "Performance",            desc: "People ops and performance management" },
+  { id: "agents",         emoji: "🤖", name: "Agents",                 desc: "AI agents and automation across the business" },
+  { id: "designplatform", emoji: "🖌️", name: "Design Platform",        desc: "Design systems and product experience" },
+  { id: "platform",       emoji: "🖥️", name: "Platform",               desc: "Core product and technology platform" },
+  { id: "dms",            emoji: "📂", name: "DMS",                    desc: "Data management service" },
+  { id: "finance",        emoji: "💼", name: "Financial Performance",  desc: "FP&A, financial controls, risk management" },
+  { id: "legal",          emoji: "⚖️", name: "Legal & Regs",           desc: "Legal, compliance and regulatory affairs" },
+  { id: "billing",        emoji: "💳", name: "Billing & Payments",     desc: "Billing processes and generator payouts" },
+  { id: "market",         emoji: "🔌", name: "Market Integration",     desc: "Data ingestion and market connectivity" },
 ];
 
 const DRIVERS = [
-  { id: "risk",      name: "Risk Assessment",        desc: "Total Foreseeable Loss ÷ Maximum Risk Limit. Measures how much risk we're taking on across the business." },
-  { id: "mcr",       name: "Monthly Contracted Revenue", desc: "Total EAC (MWh) signed (Buy & Sell), fortnightly. A key pulse of commercial health." },
-  { id: "fee",       name: "tem Transaction Fee",    desc: "Order + Booking Margin ÷ Gross Transaction Value. How tem makes money — target ~15%." },
-  { id: "rev",       name: "Revenue per Employee",   desc: "Annualised Net Transaction Revenue ÷ Headcount. More revenue per person = leaner, stronger business." },
-  { id: "retention", name: "Customer Retention",     desc: "Volume retained at customer level. Are customers staying?" },
+  { id: "risk",      emoji: "🛡️", name: "Risk Assessment",           desc: "Total Foreseeable Loss ÷ Maximum Risk Limit. Measures how much risk we're taking on across the business." },
+  { id: "mcr",       emoji: "💰", name: "Monthly Contracted Revenue", desc: "Total EAC (MWh) signed (Buy & Sell), fortnightly. A key pulse of commercial health." },
+  { id: "fee",       emoji: "💳", name: "tem Transaction Fee",        desc: "Order + Booking Margin ÷ Gross Transaction Value. How tem makes money — target ~15%." },
+  { id: "rev",       emoji: "📈", name: "Revenue per Employee",       desc: "Annualised Net Transaction Revenue ÷ Headcount. More revenue per person = leaner, stronger business." },
+  { id: "retention", emoji: "🔄", name: "Customer Retention",         desc: "Volume retained at customer level. Are customers staying?" },
 ];
 
 const VALUES = [
@@ -216,9 +216,9 @@ function ProgressBar({ step, total }) {
 
 function Welcome({ onNext }) {
   const cards = [
-    { label: "Build It",   desc: "Sort engines and services into the right layer" },
-    { label: "Drivers",    desc: "Match metrics to real-world situations" },
-    { label: "Values",     desc: "Match tem values to their contrasts" },
+    { emoji: "🏗️", label: "Build It",   desc: "Sort engines and services into the right layer" },
+    { emoji: "🎯", label: "Drivers",    desc: "Match metrics to real-world situations" },
+    { emoji: "💡", label: "Values",     desc: "Match tem values to their contrasts" },
   ];
   return (
     <div style={{ padding: "40px 48px" }}>
@@ -227,8 +227,9 @@ function Welcome({ onNext }) {
         let's make sure you understand <strong style={{ color: T.ink }}>how the company works</strong> and <strong style={{ color: T.ink }}>what we stand for</strong>.
       </p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 36 }}>
-        {cards.map(({ label, desc }) => (
+        {cards.map(({ emoji, label, desc }) => (
           <div key={label} style={{ ...S.panel, padding: 20 }}>
+            <div style={{ fontSize: 28, marginBottom: 10 }}>{emoji}</div>
             <div style={{ fontFamily: T.fontSans, fontWeight: 600, fontSize: 14, color: T.ink, marginBottom: 6 }}>{label}</div>
             <div style={{ fontFamily: T.fontSans, fontSize: 12, color: T.slate, lineHeight: 1.5 }}>{desc}</div>
           </div>
@@ -311,6 +312,7 @@ function BuildIt({ onNext }) {
                         fontFamily: T.fontSans,
                       }}
                     >
+                      <span style={{ fontSize: 20, flexShrink: 0 }}>{item.emoji}</span>
                       <div style={{ flex: 1 }}>
                         <div style={{ fontSize: 12, fontWeight: 600, color: T.ink }}>{item.name}</div>
                         <div style={{ fontSize: 11, color: T.slate }}>{item.desc}</div>
@@ -351,10 +353,14 @@ function BuildIt({ onNext }) {
                   background: T.softWhite, border: `1px solid ${T.fog}`,
                   borderRadius: 8, padding: "6px 12px",
                   cursor: "grab", fontFamily: T.fontSans,
+                  display: "flex", alignItems: "center", gap: 8,
                 }}
               >
-                <div style={{ fontSize: 12, fontWeight: 600, color: T.ink }}>{item.name}</div>
-                <div style={{ fontSize: 10, color: T.slate }}>{item.desc}</div>
+                <span style={{ fontSize: 18, flexShrink: 0 }}>{item.emoji}</span>
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: T.ink }}>{item.name}</div>
+                  <div style={{ fontSize: 10, color: T.slate }}>{item.desc}</div>
+                </div>
               </div>
             ))}
             {allPlaced && (
@@ -415,15 +421,18 @@ function DriversGame({ onNext }) {
 
   return (
     <div style={{ padding: "32px 48px" }}>
-      {/* Driver reference pills */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24 }}>
+      {/* Driver reference cards */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 8, marginBottom: 24 }}>
         {DRIVERS.map(d => (
           <div key={d.id} style={{
-            ...S.panel, padding: "10px 14px",
+            ...S.panel, padding: "12px 14px",
             borderColor: selected && q?.answer === d.id ? T.solarRed : T.fog,
-            flex: "0 0 auto",
+            background: selected && q?.answer === d.id ? "#FEF1E5" : "#fff",
+            transition: "all 0.15s",
           }}>
-            <div style={{ fontFamily: T.fontSans, fontWeight: 600, fontSize: 11, color: T.ink }}>{d.name}</div>
+            <div style={{ fontSize: 22, marginBottom: 6 }}>{d.emoji}</div>
+            <div style={{ fontFamily: T.fontSans, fontWeight: 600, fontSize: 11, color: T.ink, marginBottom: 4 }}>{d.name}</div>
+            <div style={{ fontFamily: T.fontSans, fontSize: 10, color: T.slate, lineHeight: 1.4 }}>{d.desc}</div>
           </div>
         ))}
       </div>
@@ -482,6 +491,7 @@ function DriversGame({ onNext }) {
                     transition: "all 0.12s", fontFamily: T.fontSans,
                   }}
                 >
+                  <div style={{ fontSize: 20, marginBottom: 4 }}>{d.emoji}</div>
                   <div style={{ fontWeight: 600, fontSize: 13, color }}>{d.name}</div>
                 </div>
               );
@@ -698,14 +708,17 @@ function Results() {
         You've completed all three sections. Here's your quick reference to keep.
       </p>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 20 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 16 }}>
         {/* Engines */}
         <div style={S.panel}>
           <div style={S.sectionLabel}>The three engines</div>
           {ENGINES.map(e => (
-            <div key={e.id} style={{ marginBottom: 10 }}>
-              <div style={{ fontFamily: T.fontSans, fontWeight: 600, fontSize: 13, color: T.ink }}>{e.name}</div>
-              <div style={{ fontFamily: T.fontSans, fontSize: 11, color: T.slate }}>{e.desc}</div>
+            <div key={e.id} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 12 }}>
+              <span style={{ fontSize: 20, flexShrink: 0 }}>{e.emoji}</span>
+              <div>
+                <div style={{ fontFamily: T.fontSans, fontWeight: 600, fontSize: 13, color: T.ink }}>{e.name}</div>
+                <div style={{ fontFamily: T.fontSans, fontSize: 11, color: T.slate }}>{e.desc}</div>
+              </div>
             </div>
           ))}
         </div>
@@ -714,8 +727,12 @@ function Results() {
         <div style={S.panel}>
           <div style={S.sectionLabel}>The five drivers</div>
           {DRIVERS.map(d => (
-            <div key={d.id} style={{ marginBottom: 10 }}>
-              <div style={{ fontFamily: T.fontSans, fontWeight: 600, fontSize: 13, color: T.ink }}>{d.name}</div>
+            <div key={d.id} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 12 }}>
+              <span style={{ fontSize: 20, flexShrink: 0 }}>{d.emoji}</span>
+              <div>
+                <div style={{ fontFamily: T.fontSans, fontWeight: 600, fontSize: 13, color: T.ink }}>{d.name}</div>
+                <div style={{ fontFamily: T.fontSans, fontSize: 11, color: T.slate }}>{d.desc}</div>
+              </div>
             </div>
           ))}
         </div>
@@ -735,11 +752,14 @@ function Results() {
       {/* Services panel */}
       <div style={S.panel}>
         <div style={S.sectionLabel}>The services</div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6px 16px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "8px 16px" }}>
           {SERVICES.map(s => (
-            <div key={s.id}>
-              <div style={{ fontFamily: T.fontSans, fontWeight: 600, fontSize: 12, color: T.ink }}>{s.name}</div>
-              <div style={{ fontFamily: T.fontSans, fontSize: 11, color: T.slate }}>{s.desc}</div>
+            <div key={s.id} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+              <span style={{ fontSize: 16, flexShrink: 0 }}>{s.emoji}</span>
+              <div>
+                <div style={{ fontFamily: T.fontSans, fontWeight: 600, fontSize: 12, color: T.ink }}>{s.name}</div>
+                <div style={{ fontFamily: T.fontSans, fontSize: 11, color: T.slate }}>{s.desc}</div>
+              </div>
             </div>
           ))}
         </div>
